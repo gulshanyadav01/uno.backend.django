@@ -61,6 +61,7 @@ class User(AbstractBaseUser, GenericModel):
     middle_name = models.CharField(max_length=32, null=True, blank=True)
     last_name = models.CharField(max_length=32, null=True, blank=True)
 
+
     username = models.CharField(max_length=36, unique=True, default=uuid.uuid4, editable=False)
     pan = models.CharField(max_length=10, null=True, blank=True)
     aadhar = models.CharField(max_length=16, null=True, blank=True)
