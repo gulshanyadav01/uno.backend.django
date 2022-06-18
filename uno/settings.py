@@ -90,13 +90,21 @@ WSGI_APPLICATION = 'uno.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'USER': 'postgres',
+    #     'NAME': 'uno',
+    #     'PASSWORD': '12345',
+    #     'HOST': 'localhost',
+    #     'PORT': '5432'
+    # },
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'USER': 'postgres',
-        'NAME': 'uno',
-        'PASSWORD': '12345',
-        'HOST': 'localhost',
-        'PORT': '5432'
+        'USER': 'doadmin',
+        'NAME': 'defaultdb',
+        'PASSWORD': 'AVNS_ZGWAzobSPOTRly_3knL',
+        'HOST': 'uno-dev-do-user-11817905-0.b.db.ondigitalocean.com',
+        'PORT': '25060'
     },
 }
 

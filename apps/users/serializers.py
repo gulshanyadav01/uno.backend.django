@@ -37,3 +37,13 @@ class VerifyOTPRequestSerializer(serializers.Serializer):
         pass
 
     otp = serializers.CharField(required=False, max_length=6, min_length=6)
+
+
+class PanSerializer(serializers.Serializer):
+    def update(self, instance, validated_data):
+        pass
+
+    def create(self, validated_data):
+        pass
+
+    pan = serializers.CharField(required=True, max_length=10, min_length=10)

@@ -10,7 +10,7 @@ from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 
 from apps.users.models import User
-from apps.users.serializers import RegisterUserSerializer, VerifyOTPRequestSerializer
+from apps.users.serializers import RegisterUserSerializer, VerifyOTPRequestSerializer, PanSerializer
 from uno import settings
 
 
@@ -62,7 +62,7 @@ class AuthView(viewsets.ViewSet):
         if not user:
             raise AuthenticationFailed('User does not exist.')
 
-        is_verified = user.verify_otp_or_mpin(supplied_otp=otp,)
+        is_verified = user.verify_otp_or_mpin(supplied_otp=otp)
         print("this is verified", is_verified)
         if not is_verified:
             error_message = "please enter valid otp"
@@ -77,6 +77,24 @@ class AuthView(viewsets.ViewSet):
             "jwt": str(refresh.access_token)
         }
         return response
+
+    @action(methods=['POST'], detail=False, permission_classes=[IsAuthenticated])
+    def pan_verify(self, request):
+
+        serializer = PanSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = User.objects.filter(
+            id=request.user.id
+        ).first()
+
+        print("this is user", user)
+
+        otp = serializer.validated_data['otp'] if 'otp' in serializer.validated_data else None
+
+
+
+
+
 
 
 

@@ -135,3 +135,6 @@ class User(AbstractBaseUser, GenericModel):
                 otp_obj.save()
                 is_verified = True
         return is_verified
+
+    def pan(self, pan):
+        self.pan(pan)
